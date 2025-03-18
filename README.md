@@ -26,3 +26,5 @@ puis tu me lances tout ça là :
 ```bash
 node app.js
 ```
+
+poulet 🍗
