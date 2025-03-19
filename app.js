@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { SerialPort } = require('serialport'); // ✅ Correction de l'import
-const { ReadlineParser } = require('@serialport/parser-readline'); // ✅ Correction du parser
+const { SerialPort } = require('serialport');
+const { ReadlineParser } = require('@serialport/parser-readline');
 const path = require('path');
 
 const app = express();
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 });
 
 // RFID
-app.get('/rfid', (req, res) => {
+app.get('/rfid', (req,/*kms*/ res) => {
     res.json({ rfidTag });
 });
 
@@ -64,7 +64,5 @@ app.listen(port, () => {
 app.get('/esp32-data', (req, res) => {
     res.json({ data: rfidTag || "Aucune donnée reçue" });
 });
-
-
 
 

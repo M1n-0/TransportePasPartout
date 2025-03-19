@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "ESP32 COM Viewer",
+    "version": "1.0",
+    "description": "Affiche le port COM de l'ESP32",
+    "permissions": ["serial"],
+    "action": {
+      "default_popup": "/view/popup.html",
+      "default_icon": {
+        "16": "/assets/img/TransportePasPartoutFT16.png",
+        "48": "/assets/img/TransportePasPartoutFT48.png",
+        "128": "/assets/img/TransportePasPartoutFT128.png"
+      }
+    },
+    "background": {
+      "service_worker": "/assets/js/background.js"
+    }
+  }
+  
