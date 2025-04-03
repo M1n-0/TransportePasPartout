@@ -50,12 +50,11 @@ void setup() {
 }
 void loop() {
 
-  if(rep == 2){
 if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {
   delay(500);
   return;
 }
-
+if(rep == 2){
 // Display card UID
 Serial.print("----------------\nCard UID: ");
 MFRC522Debug::PCD_DumpVersionToSerial(mfrc522, Serial);
