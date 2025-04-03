@@ -39,22 +39,7 @@ async function requestSerialPort() {
         console.error("Erreur :", error);
         document.getElementById("esp32-port").textContent = "Aucun port sélectionné.";
     }
-
-async function destroyeverythings(){
-    try {
-        if (!("serial" in navigator)) {
-            throw new Error("Web Serial API non supportée.");
-        }
-        console.log("Fermeture du port série...");
-        const port = await navigator.serial.requestPort();
-        console.log("Port fermé :", port);
-        document.getElementById("esp32-port").textContent = "Port fermé avec succès.";
-        await detectESP32();
-    } catch (error) {
-        console.error("Erreur :", error);
-        document.getElementById("esp32-port").textContent = "Aucun port fermé.";
-    }
-}
+    
 }
 async function getDataFromESP32() {
     try {
