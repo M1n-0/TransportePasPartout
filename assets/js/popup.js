@@ -14,7 +14,7 @@ async function detectESP32() {
             throw new Error("Web Serial API non supportée.");
         }
         const ports = await navigator.serial.getPorts();
-        if (ports.length > 0) {
+        if (ports.length > 0) { //shlagos un peu ça faut renforcer la condition
             document.getElementById("esp32-port").textContent = "ESP32 détecté sur un port série.";
         } else {
             document.getElementById("esp32-port").textContent = "Aucun ESP32 détecté.";
