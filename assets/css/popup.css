@@ -7,15 +7,29 @@ body{
 }
 
 .title{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     font-family: "Karla", sans-serif;
     font-size: 35px;
     color: white;
 }
 
 .text{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     font-family: "Karla", sans-serif;
     color:white;
 }
+
+
+.Button-Div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .Buttons {
     font-family: "Karla", sans-serif;
