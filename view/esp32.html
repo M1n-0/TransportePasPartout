@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur RFID</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        h1 { color: #333; }
+        #uuid { font-size: 24px; font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>UUID de la carte RFID</h1>
+    <p id="uuid">En attente...</p>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:3001"); // Assurez-vous que le serveur WebSocket tourne
+
+        ws.onmessage = (event) => {
+            document.getElementById("uuid").textContent = "UUID: " + event.data;
+        };
+
+        ws.onerror = (error) => {
+            console.error("Erreur WebSocket:", error);
+        };
+    </script>
+</body>
+</html>

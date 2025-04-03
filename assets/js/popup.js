@@ -39,7 +39,7 @@ async function requestSerialPort() {
         console.error("Erreur :", error);
         document.getElementById("esp32-port").textContent = "Aucun port sélectionné.";
     }
-    
+
 }
 async function getDataFromESP32() {
     try {
@@ -110,3 +110,52 @@ async function getRFIDData() {
         document.getElementById("rfid-data").textContent = "Erreur de récupération des données RFID.";
     }
 }
+
+document.getElementById("get-rfid-btn").addEventListener("click", async function () {
+    console.log("Bouton Récupérer RFID cliqué !");
+    await getRFIDData();
+});
+
+document.getElementById("get-data-btn").addEventListener("click", async function () {
+    console.log("Bouton Récupérer données ESP32 cliqué !");
+    await getDataFromESP32();
+});
+async function pickUpRFIDTag() {
+    try {
+        if (!("serial" in navigator)) {
+            throw new Error("Web Serial API non supportée.");
+        }
+        console.log("Lecture du tag RFID...");
+        const port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+
+        const reader = port.readable.getReader();
+        const decoder = new TextDecoderStream();
+        port.readable.pipeTo(decoder.writable);
+        const inputStream = decoder.readable.getReader();
+
+        let rfidTag = "";
+        while (true) {
+            const { value, done } = await inputStream.read();
+            if (done) {
+                break;
+            }
+            rfidTag += value;
+        }
+
+        reader.releaseLock();
+        inputStream.releaseLock();
+        await port.close();
+
+        console.log("Tag RFID récupéré :", rfidTag);
+        document.getElementById("rfid-tag").textContent = rfidTag;
+    } catch (error) {
+        console.error("Erreur lors de la lecture du tag RFID :", error);
+        document.getElementById("rfid-tag").textContent = "Erreur de lecture du tag RFID.";
+    }
+}
+
+document.getElementById("pick-rfid-btn").addEventListener("click", async function () {
+    console.log("Bouton Lire Tag RFID cliqué !");
+    await pickUpRFIDTag();
+});
