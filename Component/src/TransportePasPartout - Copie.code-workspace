@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "Component",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.sqlbook": "sql",
+			"*.ndjson": "jsonl",
+			"*.dbclient-js": "javascript",
+			"sstream": "cpp"
+		}
+	}
+}
