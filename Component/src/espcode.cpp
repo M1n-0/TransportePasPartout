@@ -6,8 +6,12 @@ byte bufferblocksize = 18;
 byte blockDataRead[18];
 byte newBlockData[17] = {""};
 
+  #define green_led 26
+  #define red_led 27
 
 void setup_RFID(MFRC522 *mfrc522, MFRC522::MIFARE_Key key){
+    pinMode(green_led, OUTPUT);
+    pinMode(red_led, OUTPUT);
     SPI.begin();
     
     (*mfrc522).PCD_Init();    // Init MFRC522 board.
@@ -22,19 +26,22 @@ void setup_RFID(MFRC522 *mfrc522, MFRC522::MIFARE_Key key){
 
 void read(MFRC522 *mfrc522){
     if (!(*mfrc522).PICC_IsNewCardPresent() || !(*mfrc522).PICC_ReadCardSerial()) {
+      digitalWrite(green_led, LOW);
+        digitalWrite(red_led, HIGH);
         delay(500);
         return;
       }
     Serial.print("read block");
-  
-    for (int j=0;j<16;j++)
-    {
-      Serial.write(blockDataRead[j]);
-    }
+    digitalWrite(red_led, LOW);
+    digitalWrite(green_led, HIGH);
+    // for (int j=0;j<16;j++)
+    // {
+    //   Serial.write(blockDataRead[j]);
+    // }
     Serial.println("");
   // Dump debug info about the card; PICC_HaltA() is automatically called.
   MFRC522Debug::PICC_DumpToSerial((*mfrc522), Serial, &((*mfrc522).uid));
-  delay(2000);
+  delay(100);
 }
 
 void write(MFRC522 *mfrc522,  MFRC522::MIFARE_Key key){
