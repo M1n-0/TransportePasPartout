@@ -1,21 +1,16 @@
-// #ifndef Espcode
-// #define ESPCODE
-// #include <Arduino.h>
+#ifndef ESP_RFID
+#define ESP_RFID
 
-// void setup();
-// void loop();
-// void checkUp();
+#include <Arduino.h>
+#include <MFRC522v2.h>
+#include <MFRC522DriverSPI.h>
+//#include <MFRC522DriverI2C.h>
+#include <MFRC522DriverPinSimple.h>
+#include <MFRC522Debug.h>
+#include <SPI.h>
 
-// class RFID
-// {
-// protected :
-// int pin_SDA;
-// int pin_SCK;
-// int pin_MOSI;
-// int pin_MISO;
+void setup_RFID(MFRC522 *mfrc522, MFRC522::MIFARE_Key key);
+void read(MFRC522 *mfrc522);
+void write(MFRC522 *mfrc522,  MFRC522::MIFARE_Key key);
 
-// int pin_GND;
-// int pin_RST;
-// int pin_3V;
-// }
-// #endif
+#endif
