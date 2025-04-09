@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background: rgb(78,78,78);
+    background: linear-gradient(90deg, rgba(78,78,78,1) 0%, rgb(63, 32, 71) 100%);}
+.titre {
+    color: #ffffff;
+}
+p {
+    font-size: 18px;
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(54, 195, 54);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#uuid, #esp32-port, #esp32-data, #rfid-data, #rfid-tag {
+    font-size: 20px; font-weight: bold; color: rgb(255, 255, 255); margin-top: 10px;
+}

@@ -3,7 +3,7 @@ const { WebSocketServer } = require('ws');
 
 const port = new SerialPort({
     path: 'COM5', // Remplace par le bon port (ex: COM3 sous Windows)
-    baudRate: 115200
+    baudRate: 9600
 });
 
 const wss = new WebSocketServer({ port: 3001 });
@@ -18,4 +18,4 @@ wss.on('connection', (ws) => {
     });
 });
 
-console.log('Serveur WebSocket démarré sur ws://localhost:3000');
+console.log('Serveur WebSocket démarré sur ws://localhost:3001');
