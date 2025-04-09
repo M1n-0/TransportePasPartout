@@ -1,29 +1,21 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecteur RFID</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        h1 { color: #333; }
-        #uuid { font-size: 24px; font-weight: bold; color: blue; }
-    </style>
+    <title>ESP32 et RFID</title>
+    <link rel="stylesheet" href="/assets/css/esp32.css">
 </head>
 <body>
-    <h1>UUID de la carte RFID</h1>
-    <p id="uuid">En attente...</p>
+    <h1 class="titre">ESP32 et RFID</h1>
 
-    <script>
-        const ws = new WebSocket("ws://localhost:3001"); // Assurez-vous que le serveur WebSocket tourne
+    <button id="select-port-btn">Sélectionner un port</button>
+    <button id="get-rfid-btn">Récupérer données RFID</button>
+    <button id="pick-rfid-btn">Lire Tag RFID</button>
 
-        ws.onmessage = (event) => {
-            document.getElementById("uuid").textContent = "UUID: " + event.data;
-        };
+    <p id="esp32-port">Statut ESP32 : En attente...</p>
+    <p id="esp32-data">Données ESP32 : En attente...</p>
+    <p id="rfid-data">Données RFID : En attente...</p>
+    <p id="rfid-tag">Tag RFID : En attente...</p>
 
-        ws.onerror = (error) => {
-            console.error("Erreur WebSocket:", error);
-        };
-    </script>
+    <script src = "/assets/js/get_rfid.js"></script>
 </body>
-</html>
